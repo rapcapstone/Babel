@@ -1,79 +1,74 @@
 var PlayerLamp : GameObject;
 var PlayerLampLight : GameObject;
 var PlayerLampFlame : GameObject;
-//var Lamp : GameObject;
+
+private static var refill : float = 25;
 
 private var State = 0;  //Lift/on = 1, Lower/off = 0
 
+//Lamp Oil
+private static var Oil : float = 0;
+private var CurrentOil : float = 0;
+private var OilUsage : float = .5;
+private var OilCapacity : float = 100;
+
+
 function Start () {
-    //Initialize Player lamp --> off
+    //Initialize lamp oil : 50%
+    Oil = .5 * OilCapacity;
     
-    PlayerLampLight.GetComponent.<Light>().range = 0;
-    PlayerLampLight.GetComponent.<Light>().intensity = 0;
-        
-    PlayerLampFlame.GetComponent.<ParticleSystem>().enableEmission = false;
+    //Initialize lamp light : off
+    LampOff();
 }
 
 function Update () {
-    if (Input.GetKeyDown(KeyCode.F) && State == 0)
-	{
-	    PlayerLamp.GetComponent.<Animation>().Play("LiftLamp");
-        State = 1;
-        
-        PlayerLampLight.GetComponent.<Light>().range = 4.5;
-        PlayerLampLight.GetComponent.<Light>().intensity = 2.5;
-        
-        PlayerLampFlame.GetComponent.<ParticleSystem>().enableEmission = true;
-        
-        //PlayerLampLight.GetComponent.<Flame>().enabled = true;
-	}
-    else if(Input.GetKeyDown(KeyCode.F) && State == 1)
+    CurrentOil = Oil;
+    //Checks if there is oil.
+    if(Oil > 0)
     {
-        PlayerLamp.GetComponent.<Animation>().Play("LowerLamp");
+        //Toggle lamp on/off.
+        if (Input.GetKeyDown(KeyCode.F) && State == 0)
+        {
+            PlayerLamp.GetComponent.<Animation>().Play("LiftLamp");
+            State = 1;
+            LampOn();
+        }
+        else if(Input.GetKeyDown(KeyCode.F) && State == 1)
+        {
+            PlayerLamp.GetComponent.<Animation>().Play("LowerLamp");
+            State = 0;
+            LampOff();
+        }
+    }
+    else if(Oil <= 0)
+    {
+        Oil = 0;
         State = 0;
-        
-        PlayerLampLight.GetComponent.<Light>().range = 0;
-        PlayerLampLight.GetComponent.<Light>().intensity = 0;
-        
-        PlayerLampFlame.GetComponent.<ParticleSystem>().enableEmission = false;
-        
-        //PlayerLampLight.GetComponent.<Flame>().enabled = false;
+        LampOff();
     }
     
-    
-    
-    
-    //if Lamp is 'on', then PlayerLamp is 'off'; if Lamp is 'off', then PlayerLamp is 'on'.
-    /*
-    if(Lamp.active == true)
+    if(State == 1)
     {
-        PlayerLamp.active = false;
+        Oil -= Time.deltaTime * OilUsage;
     }
-    if(Lamp.active == false)
-    {
-       PlayerLamp.active = true;
-    }
-    */
+}
 
-    /*
-    if (PlayerHasLamp == true)
-	{
-        PlayerLamp.active = true;
-	}
-    
-    if (PlayerHasLamp == false)
-    {
-        PlayerLamp.active = false;
-    }
-    
-    if (Lamp.active == true)
-    {
-        PlayerHasLamp = false;
-    }
-    
-    if(Lamp.active == false)
-    {
-        PlayerHasLamp = true;
-    }
-    */
+function LampOn() {
+    //Enables lamp light.
+    PlayerLampLight.GetComponent.<Light>().range = 4.5;
+    PlayerLampLight.GetComponent.<Light>().intensity = 2.5;
+    PlayerLampFlame.GetComponent.<ParticleSystem>().enableEmission = true;
+}
+
+function LampOff() {
+    //Disables lamp light.
+    PlayerLampLight.GetComponent.<Light>().range = 0;
+    PlayerLampLight.GetComponent.<Light>().intensity = 0;
+    PlayerLampFlame.GetComponent.<ParticleSystem>().enableEmission = false;
+}
+
+static function AddOil (amount : int)
+{
+    //Oil = Mathf.Clamp(Oil+refill, 0, 100);
+    Oil = Oil+refill;
 }

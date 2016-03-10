@@ -12,6 +12,7 @@ function Start () {
 function Update () {
     if (Input.GetKeyDown(KeyCode.E) && InRange == true)
 	{
+        //Disables Lamp and enables PlayerLamp
         Lamp.active = false;
         PlayerLamp.active = true;
 	}
