@@ -19,9 +19,15 @@ function Start () {
     
     //Initialize lamp light : off
     LampOff();
+    
+    //Lock flame particle rotation.
+    //PlayerLampFlame.GetComponent.<ParticleSystem>().transform.eulerAngles.x = 0.388395;
+    //PlayerLampFlame.GetComponent.<ParticleSystem>().transform.eulerAngles.z = 0.5908886;
+    //PlayerLampFlame.GetComponent.<ParticleSystem>().transform.eulerAngles.z = -0.388395;
 }
 
 function Update () {
+    //PlayerLampFlame.GetComponent.<ParticleSystem>().transform.rotation.y = (main camera)transform.rotation.y 
     CurrentOil = Oil;
     //Checks if there is oil.
     if(Oil > 0)
@@ -29,13 +35,13 @@ function Update () {
         //Toggle lamp on/off.
         if (Input.GetKeyDown(KeyCode.F) && State == 0)
         {
-            PlayerLamp.GetComponent.<Animation>().Play("LiftLamp");
+            //PlayerLamp.GetComponent.<Animation>().Play("LiftLamp");
             State = 1;
             LampOn();
         }
         else if(Input.GetKeyDown(KeyCode.F) && State == 1)
         {
-            PlayerLamp.GetComponent.<Animation>().Play("LowerLamp");
+            //PlayerLamp.GetComponent.<Animation>().Play("LowerLamp");
             State = 0;
             LampOff();
         }
@@ -54,14 +60,14 @@ function Update () {
 }
 
 function LampOn() {
-    //Enables lamp light.
+    //Enable lamp light.
     PlayerLampLight.GetComponent.<Light>().range = 4.5;
     PlayerLampLight.GetComponent.<Light>().intensity = 2.5;
     PlayerLampFlame.GetComponent.<ParticleSystem>().enableEmission = true;
 }
 
 function LampOff() {
-    //Disables lamp light.
+    //Disable lamp light.
     PlayerLampLight.GetComponent.<Light>().range = 0;
     PlayerLampLight.GetComponent.<Light>().intensity = 0;
     PlayerLampFlame.GetComponent.<ParticleSystem>().enableEmission = false;

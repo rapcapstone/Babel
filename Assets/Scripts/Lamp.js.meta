@@ -1,10 +1,13 @@
 fileFormatVersion: 2
 guid: 3fb4693d712b1074388f7ca2a2d7facc
-timeCreated: 1456777946
+timeCreated: 1462388784
 licenseType: Free
 MonoImporter:
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - Lamp: {instanceID: 0}
+  - PlayerLamp: {instanceID: 0}
+  - guiSkin: {fileID: 11400000, guid: 7f492f30806e25544b3d8f14846f2177, type: 2}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

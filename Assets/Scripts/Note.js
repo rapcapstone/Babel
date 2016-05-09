@@ -92,7 +92,7 @@ function OnGUI ()
 	if(InRange == true && Display == false)
 	{
 		GUI.skin = guiSkin;
-		GUI.Label (Rect (Screen.width/2-50, Screen.height/2-55, 120, 50), "Press E to look at note.");
+		GUI.Label (Rect (Screen.width/2-100, (Screen.height/2)+175, 200, 50), "Press <b>E</b> to look at <b>note</b>");
 	
 	}
 

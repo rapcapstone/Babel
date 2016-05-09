@@ -1,10 +1,17 @@
 fileFormatVersion: 2
 guid: 96a16e53a5311d847b2846dbfb487594
-timeCreated: 1458798364
+timeCreated: 1462388797
 licenseType: Free
 MonoImporter:
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - Note: {instanceID: 0}
+  - NoteUIImage: {instanceID: 0}
+  - FPSControl: {instanceID: 0}
+  - PlayerController: {instanceID: 0}
+  - FPSCamera: {instanceID: 0}
+  - CameraBlur: {instanceID: 0}
+  - guiSkin: {fileID: 11400000, guid: 7f492f30806e25544b3d8f14846f2177, type: 2}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 
