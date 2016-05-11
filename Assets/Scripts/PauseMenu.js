@@ -2,6 +2,7 @@ var guiSkin : GUISkin;
 
 var PlayerController : UnityStandardAssets.Characters.FirstPerson.FirstPersonController;
 var FPSControl : GameObject;
+var PlayerCapsule : GameObject;
 
 private var savedTimeScale : float;
 private var onPause;
@@ -44,6 +45,8 @@ function Update()
         PlayerController = FPSControl.GetComponent("FirstPersonController");
         PlayerController.enabled = false;
         
+        //PlayerCapsule.GetComponent("CapsuleCollider").enabled = false;
+        
     }
     else
     {
@@ -53,6 +56,8 @@ function Update()
         
         PlayerController = FPSControl.GetComponent("FirstPersonController");
         PlayerController.enabled = true;
+        
+        //PlayerCapsule.GetComponent("CapsuleCollider").enabled = true;
     }
     
 }

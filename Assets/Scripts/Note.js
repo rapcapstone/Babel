@@ -10,6 +10,7 @@ var CameraBlur : BlurEffect;
 
 private var InRange; //if player is in range to view the note.
 private var Display; //if note is displayed on screen.
+private var savedTimeScale : float;
 
 public var guiSkin : GUISkin;
 
@@ -31,9 +32,15 @@ function Update () {
     {
         if(Display == false){
             Display = true;
+            
+            //Freeze time to prevent player movement.
+            savedTimeScale = Time.timeScale;
+            Time.timeScale = 0.0001;
         }
         else{
             Display = false;
+            
+            Time.timeScale = savedTimeScale;
         }
     }
     
