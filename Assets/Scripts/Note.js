@@ -5,7 +5,7 @@ var FPSControl : GameObject;
 //var PlayerController : FirstPersonController;
 var PlayerController : UnityStandardAssets.Characters.FirstPerson.FirstPersonController;
 var FPSCamera : GameObject;
-var CameraBlur : BlurEffect;
+var CameraBlur : Component;
 
 
 private var InRange; //if player is in range to view the note.

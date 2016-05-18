@@ -8,7 +8,7 @@ function Update ()
 {
  	if (Input.GetKeyDown(KeyCode.E) && playerNextToKey == true)
 	{
-	TheKey.active = false;
+		TheKey.active = false;
 	}
 }
 
@@ -17,6 +17,7 @@ function OnTriggerEnter (theCollider : Collider)
 	if (theCollider.tag == "Player")
 	{
 		playerNextToKey = true;
+		Debug.log("Enter.");
 	}
 }
 
