@@ -89,14 +89,16 @@ function OnGUI()
             }
             if(GUILayout.Button("Restart",GUILayout.Height (50)))
             {
-                Application.LoadLevel("level_one");
+                Application.LoadLevel("level_two");
                 Time.timeScale = 1.0;
                 onPaused = false;
             }
             if(GUILayout.Button("Main Menu",GUILayout.Height (50)))
             {
                 //Application.Quit();
-                //Application.LoadLevel("main_menu");
+                Application.LoadLevel("MainMenu");
+                Time.timeScale = 1.0;
+                onPaused = false;
                 //Time.timeScale = 1.0;
                 //onPaused = false;
             }
