@@ -1,4 +1,4 @@
-var Key : GameObject;
+﻿var Key : GameObject;
 
 private var Range = false;
 private var State = 0;  //open = 1, close = 0
@@ -14,12 +14,12 @@ function Update ()
 {
 	if (Input.GetKeyDown(KeyCode.E) && Range == true && Key.active == false && State == 0)
 	{
-	    GetComponent.<Animation>().Play("DoorOpen90");
+	    GetComponent.<Animation>().Play("DoorOpen");
         State = 1;
 	}
     else if(Input.GetKeyDown(KeyCode.E) && Range == true && Key.active == false && State == 1)
     {
-        GetComponent.<Animation>().Play("DoorClose90");
+        GetComponent.<Animation>().Play("DoorClose");
         State = 0;
     }
 }
