@@ -1,4 +1,5 @@
 ﻿private var anim : Animation;
+var creak_noise : AudioClip;
 
 private var Range = false;
 private var State = 0;  //open = 1, close = 0
@@ -15,11 +16,13 @@ function Update ()
 	if (Input.GetKeyDown(KeyCode.E) && Range == true && State == 0)
 	{
 	    anim.CrossFade("DoorOpen");
+        AudioSource.PlayClipAtPoint(creak_noise, GetComponent.<Collider>().transform.position);
         State = 1;
 	}
     else if(Input.GetKeyDown(KeyCode.E) && Range == true && State == 1)
     {
         anim.CrossFade("DoorClose");
+        AudioSource.PlayClipAtPoint(creak_noise, GetComponent.<Collider>().transform.position);
         State = 0;
     }
 }

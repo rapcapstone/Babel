@@ -1,5 +1,7 @@
-var animation : AnimationClip;
+var scaryMat : Texture;
 var Portrait : GameObject;
+var scarySound : AudioClip;
+var player : GameObject;
 
 private var InRange = false;
 private var Activated = false;
@@ -12,8 +14,9 @@ function Update ()
     if (Activated == false){
         if (Input.GetKeyDown(KeyCode.E) && InRange == true)
         {
-            //Event when activated.
-            Portrait.GetComponent.<Animation>().Play("AnimatePortrait");
+            GetComponent.<Renderer>().materials[1].mainTexture = scaryMat;
+            AudioSource.PlayClipAtPoint(scarySound, GetComponent.<Collider>().transform.position);
+            player.SendMessage("Shake");
             Activated = true;
         }
     }

@@ -71,8 +71,8 @@ function Update () {
 
 function LampOn() {
     //Enable lamp light.
-    PlayerLampLight.GetComponent.<Light>().range = 4.5;
-    //PlayerLampLight.GetComponent.<Light>().intensity = 2.5;
+    PlayerLampLight.GetComponent.<Light>().range = 17.0;
+    PlayerLampLight.GetComponent.<Light>().intensity = 4;
     IntensityDecay();
     PlayerLampFlame.GetComponent.<ParticleSystem>().enableEmission = true;
 }

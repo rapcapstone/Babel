@@ -1,11 +1,14 @@
 var Note : GameObject;
 var NoteUIImage : GameObject;
+var textScript : Component;
+var clip : AudioClip;
+
 //var UI : GameObject;
 var FPSControl : GameObject;
 //var PlayerController : FirstPersonController;
 var PlayerController : UnityStandardAssets.Characters.FirstPerson.FirstPersonController;
 var FPSCamera : GameObject;
-var CameraBlur : Component;
+//var CameraBlur : ;
 
 
 private var InRange; //if player is in range to view the note.
@@ -30,9 +33,10 @@ function Start () {
 function Update () {
     if(Input.GetKeyDown(KeyCode.E) && InRange == true)
     {
+    AudioSource.PlayClipAtPoint(clip, GetComponent.<Collider>().transform.position);
         if(Display == false){
             Display = true;
-            
+            	    
             //Freeze time to prevent player movement.
             savedTimeScale = Time.timeScale;
             Time.timeScale = 0.0001;
@@ -45,8 +49,9 @@ function Update () {
     }
     
     if(Display == true){
-        //NoteImage.enabled = true;
         NoteUIImage.SetActive(true);
+        textScript.SendMessage("ShowJunk", true);
+
         //UI.SetActive(true);
         //this.GetComponent<Renderer>().enabled = false;
         //this.GetComponent<Collider>().enabled = false;
@@ -55,12 +60,12 @@ function Update () {
         PlayerController = FPSControl.GetComponent("FirstPersonController");
         PlayerController.enabled = false;
         //FPSCamera.GetComponent("BlurEffect").SetActive(true);    //enables the blur on Player Camera.
-        CameraBlur = FPSCamera.GetComponent("BlurEffect");
-        CameraBlur.enabled = true;
+        FPSCamera.GetComponent("Blur").enabled = true;;
     }
     else{
         //NoteImage.enabled = false;
         NoteUIImage.SetActive(false);
+        textScript.SendMessage("ShowJunk", false);
         //UI.SetActive(false);
         //this.GetComponent<Renderer>().enabled = true;
         //this.GetComponent<Collider>().enabled = true;
@@ -72,8 +77,7 @@ function Update () {
         //CharacterController.enabled = true;
         //FPSCamera.GetComponent(BlurEffect).active() = false;    //disables the blur on Player Camera.
         //FPSCamera.GetComponent("BlurEffect").SetActive(false);
-        CameraBlur = FPSCamera.GetComponent("BlurEffect");
-        CameraBlur.enabled = false;
+        FPSCamera.GetComponent("Blur").enabled = false;
     }
 }
 
@@ -100,7 +104,6 @@ function OnGUI ()
 	{
 		GUI.skin = guiSkin;
 		GUI.Label (Rect (Screen.width/2-100, (Screen.height/2)+175, 200, 50), "Press <b>E</b> to look at <b>note</b>");
-	
 	}
 
 }

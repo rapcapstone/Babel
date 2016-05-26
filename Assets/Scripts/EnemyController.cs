@@ -43,6 +43,7 @@ public class EnemyController : MonoBehaviour {
 		Collider[] targetsInViewRadius = Physics.OverlapSphere (transform.position, viewRadius, targetMask);
 
 		for (int i = 0; i < targetsInViewRadius.Length; i++) {
+			Debug.Log ("guy is visible", transform);
 			Transform target = targetsInViewRadius [i].transform;
 			Vector3 dirToTarget = (target.position - transform.position).normalized;
 			if (Vector3.Angle(transform.forward, dirToTarget) < viewAngle / 2){
@@ -59,7 +60,8 @@ public class EnemyController : MonoBehaviour {
 	}
 
 	void PursueTarget (Vector3 destination){
-		animator.SetBool ("Pursue", true);
+		Debug.Log ("Pursuing guy");
+		animator.SetBool ("isPursuing", true);
 		//face player
 		transform.rotation = Quaternion.Slerp (transform.rotation, Quaternion.LookRotation(destination - transform.position), 20 * Time.deltaTime);
 		//move twoards player

@@ -1,4 +1,5 @@
 var TheKey : GameObject;
+var sound : AudioClip;
 
 private var playerNextToKey = false;
 
@@ -9,6 +10,8 @@ function Update ()
  	if (Input.GetKeyDown(KeyCode.E) && playerNextToKey == true)
 	{
 		TheKey.active = false;
+        AudioSource.PlayClipAtPoint(sound, GetComponent.<Collider>().transform.position);
+
 	}
 }
 

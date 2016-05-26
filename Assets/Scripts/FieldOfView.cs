@@ -40,6 +40,7 @@ public class FieldOfView : MonoBehaviour {
 		Collider[] targetsInViewRadius = Physics.OverlapSphere (transform.position, viewRadius, targetMask);
 
 		for (int i = 0; i < targetsInViewRadius.Length; i++) {
+			Debug.Log ("Find a guy");
 			Transform target = targetsInViewRadius [i].transform;
 			Vector3 dirToTarget = (target.position - transform.position).normalized;
 			if (Vector3.Angle(transform.forward, dirToTarget) < viewAngle / 2){
@@ -56,6 +57,7 @@ public class FieldOfView : MonoBehaviour {
 	}
 
 	void PursueTarget (Vector3 destination){
+		Debug.Log ("pursue guy");
 		//face player
 		transform.rotation = Quaternion.Slerp (transform.rotation, Quaternion.LookRotation(destination - transform.position), 20 * Time.deltaTime);
 		//move twoards player
