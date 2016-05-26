@@ -89,15 +89,28 @@ function OnGUI()
             }
             if(GUILayout.Button("Restart",GUILayout.Height (50)))
             {
+<<<<<<< HEAD
                 Application.LoadLevel(1);
+=======
+                Application.LoadLevel("level_two");
+>>>>>>> 7061d23f4d37ce6eec7e089c36ad7ecf8223a49d
                 Time.timeScale = 1.0;
                 onPaused = false;
             }
             if(GUILayout.Button("Main Menu",GUILayout.Height (50)))
             {
+<<<<<<< HEAD
                 Application.LoadLevel(0);
                 Time.timeScale = 1.0;
                 onPaused = false;
+=======
+                //Application.Quit();
+                Application.LoadLevel("MainMenu");
+                Time.timeScale = 1.0;
+                onPaused = false;
+                //Time.timeScale = 1.0;
+                //onPaused = false;
+>>>>>>> 7061d23f4d37ce6eec7e089c36ad7ecf8223a49d
             }
         //GUILayout.EndVertical();
         GUILayout.EndArea ();
